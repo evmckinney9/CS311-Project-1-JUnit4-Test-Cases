@@ -101,7 +101,7 @@ public class TestIntervalTreap {
 		}
 	}
 	
-	public void inOrder(Node node, ArrayList<Node> array, int index){
+	private void inOrder(Node node, ArrayList<Node> array, int index){
 	    if(node == null){  
 	       return;
 	    }

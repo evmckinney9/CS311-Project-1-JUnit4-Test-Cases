@@ -91,8 +91,7 @@ public class TestIntervalTreap {
 	private void testTreapStructure(IntervalTreap it0) {
 		//Do an InOrder Traversal and append the nodes into an array
 		ArrayList<Node> inOrder = new ArrayList<Node>();
-		int index = 0;
-		inOrder(it0.getRoot(), inOrder, index);
+		inOrder(it0.getRoot(), inOrder);
 		
 		//Check if the array is sorted. If it is not sorted, it's not a valid treap. 
 		for (int k =0; k < inOrder.size()-1; k++) {
@@ -102,11 +101,11 @@ public class TestIntervalTreap {
 		}
 	}
 	
-	private void inOrder(Node node, ArrayList<Node> array, int index){
+	public void inOrder(Node node, ArrayList<Node> array){
 	    if(node == null){  
 	       return;
 	    }
-	    inOrder(node.getLeft(), array, index);
+	    inOrder(node.getLeft(), array);
 	    array.add(node);
 	    
 	    //As you visit each node, check for the heap property.
@@ -114,9 +113,8 @@ public class TestIntervalTreap {
 	    	fail("failed treap's min-heap property!");
 	    }
 	    
-	    inOrder(node.getRight(), array, index);
+	    inOrder(node.getRight(), array);
 	}
-	
 	
 	
 	

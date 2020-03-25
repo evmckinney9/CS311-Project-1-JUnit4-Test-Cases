@@ -89,24 +89,24 @@ public class TestIntervalTreap {
 	
 	private void testTreapStructure(IntervalTreap it0) {
 		//Do an InOrder Traversal and append the nodes into an array
-		Node[] inOrder = new Node[it0.getSize()];
+		ArrayList<Node> inOrder = new ArrayList<Node>();
 		int index = 0;
 		inOrder(it0.getRoot(), inOrder, index);
 		
 		//Check if the array is sorted. If it is not sorted, it's not a valid treap. 
-		for (int k =0; k < inOrder.length-1; k++) {
-			if (inOrder[k].getInterv().getLow() > inOrder[k+1].getInterv().getLow()) {
+		for (int k =0; k < inOrder.size()-1; k++) {
+			if (inOrder.get(k).getInterv().getLow() > inOrder.get(k+1).getInterv().getLow()) {
 				fail("failed treap's BST property!");
 			}
 		}
 	}
 	
-	public void inOrder(Node node, Node[] array, int index){
+	public void inOrder(Node node, ArrayList<Node> array, int index){
 	    if(node == null){  
 	       return;
 	    }
 	    inOrder(node.getLeft(), array, index);
-	    array[index++]= node;
+	    array.add(node);
 	    
 	    //As you visit each node, check for the heap property.
 	    if (node.getParent()!=null && node.getPriority() < node.getParent().getPriority()) {
@@ -115,6 +115,7 @@ public class TestIntervalTreap {
 	    
 	    inOrder(node.getRight(), array, index);
 	}
+	
 	
 	
 	

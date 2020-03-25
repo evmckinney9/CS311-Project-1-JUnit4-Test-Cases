@@ -34,6 +34,7 @@ public class TestIntervalTreap {
 	@After
 	public void tearDown() throws Exception {
 		it1 = null;
+		sc.close();
 		sc = null;
 		TP = null;
 		TN = null;
